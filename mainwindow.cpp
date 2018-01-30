@@ -20,9 +20,14 @@ MainWindow::MainWindow(QWidget *parent) :
     palette.setBrush(QPalette::Background,QBrush(QPixmap(pixmap)));
     ui->widget->setPalette(palette);
 
-    QWidget* p = new pao(this);
-    p = ui->widget;
-    p->setGeometry(0,0,500,100);
+    QWidget* p = new QWidget(ui->centralWidget);
+    p->setGeometry(QRect(10,10,10,10));
+
+    p->setPalette(palette);
+
+    QPushButton *bu = new QPushButton(ui->centralWidget);
+    bu->setGeometry(QRect(130, 200, 51, 23));
+    //p->setGeometry(0,0,500,100);
     //p->setStyleSheet("background-color:black;");
 
 
@@ -41,7 +46,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-/*
+
 void MainWindow::paintEvent(QPaintEvent *)
 {
 
@@ -62,7 +67,7 @@ void MainWindow::paintEvent(QPaintEvent *)
     }
    painter->drawPoints(pointf,iris.size());
    vecmat();
-}*/
+}
 
 void MainWindow::painter0()
 {
@@ -126,6 +131,16 @@ void MainWindow::kmcolor()
         painter->drawPoint(pointf[i]);
     }
 
+
+}
+
+void MainWindow::readQFile()
+{
+    QFile  infile("iris.txt");
+    if(!infile.open(QIODevice::ReadWrite))
+    {
+        //QMessageBox("file open error");
+    }
 
 }
 

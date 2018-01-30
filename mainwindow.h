@@ -16,7 +16,8 @@
 #include<opencv2/highgui.hpp>
 
 #include<vector>
-
+#include<QFile>
+#include<QMessageBox>
 #include"ui_mainwindow.h"
 using namespace cv;
 using namespace std;
@@ -32,11 +33,15 @@ class MainWindow : public QMainWindow,public QThread
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-     //void paintEvent(QPaintEvent *);
+     void paintEvent(QPaintEvent *);
      void painter0();
      void vecmat();
      void kmean();
      void kmcolor();
+
+     void readQFile();
+     void outQFile();
+
 public:
      void readfile();
      void vectomat();
